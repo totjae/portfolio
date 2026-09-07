@@ -11,7 +11,9 @@
   AI 분석과 규칙 기반 리스크 엔진을 결합한 국내 주식 단기매매 시스템.
 
 - [ModelNaru](https://github.com/totjae/modelnaru)  
-  여러 AI Provider와 모델을 한곳에서 사용할 수 있도록 만든 셀프호스팅 AI 채팅 웹 서비스.
+  여러 AI Provider와 모델을 한곳에서 사용할 수 있도록 만든 셀프호스팅 AI 채팅 웹 서비스.  
+  개인 서비스: [chat.mihoservice.xyz](https://chat.mihoservice.xyz)  
+  게스트 코드: `testuser`
 
 - [Breakwall](https://github.com/totjae/breakwall)  
   Godot 기반으로 제작한 랜덤 맵 벽돌부수기 게임.
