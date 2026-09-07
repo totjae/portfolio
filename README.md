@@ -10,7 +10,7 @@
 ### ModelNaru
 
 - 서비스: [chat.mihoservice.xyz](https://chat.mihoservice.xyz)
-- 게스트 코드: `testuser`
+- 게스트 체험 코드: `testuser`
 
 ## Repositories
 
