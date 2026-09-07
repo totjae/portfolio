@@ -7,6 +7,9 @@
 
 ## Repositories
 
+- [Cresta](https://github.com/totjae/Cresta)  
+  AI 분석과 규칙 기반 리스크 엔진을 결합한 국내 주식 단기매매 시스템.
+
 - [ModelNaru](https://github.com/totjae/modelnaru)  
   여러 AI Provider와 모델을 한곳에서 사용할 수 있도록 만든 셀프호스팅 AI 채팅 웹 서비스.
 
