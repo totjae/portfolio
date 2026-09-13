@@ -33,17 +33,18 @@
 ```mermaid
 flowchart LR
     subgraph NET_A["AI / Service Network"]
+        direction LR
         SERVER["Server<br/>ModelNaru · Cresta · Hermes"]
         LOCAL_AI["Local AI Machine<br/>gpt-oss · Gemma · Qwen · LFM"]
+        SERVER ~~~ LOCAL_AI
     end
 
     subgraph NET_B["Development / Management Network"]
+        direction LR
         LAPTOP["Laptop<br/>Main PC Control · Server Management"]
         MAIN_PC["Main Computer<br/>Coding · Sub-agent MCP"]
+        LAPTOP ~~~ MAIN_PC
     end
-
-    LAPTOP -->|Control| MAIN_PC
-    LAPTOP -->|Management| SERVER
 ```
 
 ### AI / Service Network
