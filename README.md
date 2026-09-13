@@ -12,6 +12,36 @@
 - 서비스: [chat.mihoservice.xyz](https://chat.mihoservice.xyz)
 - 게스트 체험 코드: `testuser`
 
+## Infrastructure
+
+개인 서비스 운영, 로컬 AI 추론, 개발 및 시스템 관리를 역할별로 분리한 개인 인프라를 운영하고 있습니다.
+
+```mermaid
+flowchart LR
+    subgraph NET_A["AI / Service Network"]
+        SERVER["Server<br/>ModelNaru · Cresta · Hermes"]
+        LOCAL_AI["Local AI Machine<br/>gpt-oss · Gemma · Qwen · LFM"]
+    end
+
+    subgraph NET_B["Development / Management Network"]
+        LAPTOP["Laptop<br/>Main PC Control · Server Management"]
+        MAIN_PC["Main Computer<br/>Coding · Sub-agent MCP"]
+    end
+
+    LAPTOP -->|Control| MAIN_PC
+    LAPTOP -->|Management| SERVER
+```
+
+### AI / Service Network
+
+- **Server** — ModelNaru, Cresta, Hermes 등 개인 서비스와 에이전트 시스템 운영
+- **Local AI Machine** — `gpt-oss`, `Gemma`, `Qwen`, `LFM` 계열 로컬 모델 구동
+
+### Development / Management Network
+
+- **Laptop** — 메인 컴퓨터 원격 제어 및 서버 관리
+- **Main Computer** — 개발·코딩 작업 및 서브에이전트 MCP 실행
+
 ## Repositories
 
 - [Cresta](https://github.com/totjae/Cresta)  
