@@ -31,14 +31,7 @@
 개인 서비스 운영, 로컬 AI 추론, 개발 및 시스템 관리를 역할별로 분리한 개인 인프라를 운영하고 있습니다.
 
 ```mermaid
-flowchart TB
-    subgraph NET_AI["AI / Service Network"]
-        direction LR
-        SERVER["Server<br/>ModelNaru · Cresta<br/>Hermes Agent"]
-        LOCAL_AI["Local AI Machine<br/>gpt-oss · Gemma<br/>Qwen · LFM"]
-        SERVER ~~~ LOCAL_AI
-    end
-
+flowchart LR
     subgraph NET_DEV["Development / Management Network"]
         direction LR
         LAPTOP["Laptop<br/>Main PC Control<br/>Server Management"]
@@ -46,7 +39,14 @@ flowchart TB
         LAPTOP ~~~ MAIN_PC
     end
 
-    SERVER ~~~ LAPTOP
+    subgraph NET_AI["AI / Service Network"]
+        direction LR
+        SERVER["Server<br/>ModelNaru · Cresta<br/>Hermes Agent"]
+        LOCAL_AI["Local AI Machine<br/>gpt-oss · Gemma<br/>Qwen · LFM"]
+        SERVER ~~~ LOCAL_AI
+    end
+
+    NET_DEV ~~~ NET_AI
 ```
 
 ### AI / Service Network
