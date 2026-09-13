@@ -46,7 +46,7 @@ flowchart LR
         LAPTOP ~~~ MAIN_PC
     end
 
-    classDef device width:280px,height:140px;
+    classDef device width:280px,height:100px;
     class SERVER,LOCAL_AI,LAPTOP,MAIN_PC device;
 ```
 
