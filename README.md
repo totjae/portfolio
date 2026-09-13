@@ -35,19 +35,16 @@ flowchart LR
     subgraph NET_A["AI / Service Network"]
         direction LR
         SERVER["Server<br/>ModelNaru · Cresta<br/>Hermes Agent"]
-        LOCAL_AI["Local AI Machine<br/>gpt-oss · Gemma · Qwen · LFM"]
+        LOCAL_AI["Local AI Machine<br/>gpt-oss · Gemma<br/>Qwen · LFM"]
         SERVER ~~~ LOCAL_AI
     end
 
     subgraph NET_B["Development / Management Network"]
         direction LR
         LAPTOP["Laptop<br/>Main PC Control<br/>Server Management"]
-        MAIN_PC["Main Computer<br/>Coding<br/>Local Sub-agent MCP"]
+        MAIN_PC["Main Computer<br/>Development · Coding<br/>Sub-agent MCP"]
         LAPTOP ~~~ MAIN_PC
     end
-
-    classDef device width:280px,height:100px;
-    class SERVER,LOCAL_AI,LAPTOP,MAIN_PC device;
 ```
 
 ### AI / Service Network
