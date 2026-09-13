@@ -45,6 +45,9 @@ flowchart LR
         MAIN_PC["Main Computer<br/>Development · Coding<br/>Sub-agent MCP"]
         LAPTOP ~~~ MAIN_PC
     end
+
+    classDef device width:260px;
+    class SERVER,LOCAL_AI,LAPTOP,MAIN_PC device;
 ```
 
 ### AI / Service Network
