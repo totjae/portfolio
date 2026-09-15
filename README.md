@@ -20,6 +20,9 @@
 - [ModelNaru](https://github.com/totjae/modelnaru)  
   여러 AI Provider와 모델을 한곳에서 사용할 수 있도록 만든 셀프호스팅 AI 채팅 웹 서비스.
 
+- [MCPex](https://github.com/totjae/mcpex)  
+  클라우드 API와 로컬 AI 모델을 연결하고, 사용자 정의 에이전트를 MCP 도구로 제공하는 로컬 에이전트 관리 서비스.
+
 - [Breakwall](https://github.com/totjae/breakwall)  
   Godot 기반으로 제작한 랜덤 맵 벽돌부수기 게임.
 
