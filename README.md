@@ -46,7 +46,9 @@ flowchart LR
         direction LR
         SERVER["Server<br/>ModelNaru · Cresta<br/>Hermes Agent"]
         LOCAL_AI["Local AI Machine<br/>gpt-oss · Gemma<br/>Qwen · LFM"]
+        AI_CLUSTER["AI Layer Cluster<br/>Layer-wise Distributed Inference<br/>(Research)"]
         SERVER ~~~ LOCAL_AI
+        LOCAL_AI ~~~ AI_CLUSTER
     end
 
     NET_DEV ~~~ NET_AI
@@ -56,6 +58,7 @@ flowchart LR
 
 - **Server** — ModelNaru, Cresta, Hermes 등 개인 서비스와 에이전트 시스템 운영
 - **Local AI Machine** — `gpt-oss`, `Gemma`, `Qwen`, `LFM` 계열 로컬 모델 구동
+- **AI Layer Cluster (Research)** — LLM의 레이어를 여러 장비에 분산해 추론하는 클러스터 구조와 장비 간 통신·메모리 활용 방식을 연구 중
 
 ### Development / Management Network
 
