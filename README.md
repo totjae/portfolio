@@ -1,66 +1,75 @@
 # 김재영 Portfolio
 
+Linux 기반 통신 시스템 구축·운영과 로그·패킷 분석 경험을 바탕으로 AI 서비스 구현과 로컬 LLM 추론을 탐구하고 있습니다.
+개인 서비스를 직접 배포·사용하며 필요한 기능을 개선하고, 모델 실행 환경과 자원 제약을 실험합니다.
+
 ## Documents
 
-- [이력서](./김재영_이력서.pdf)
 - [포트폴리오](./김재영_포트폴리오.pdf)
+- [이력서](./김재영_이력서.pdf)
 
-## Personal Service
+## 주요 프로젝트
 
-### ModelNaru
+### ModelNaru · 멀티 모델 AI 채팅 서비스
 
-- 서비스: [chat.mihoservice.xyz](https://chat.mihoservice.xyz)
-- 게스트 체험 코드: `testuser`
+여러 Provider의 모델을 하나의 대화 환경에서 사용하는 셀프호스팅 AI 채팅 서비스입니다. 개인 서버에 배포해 지인과 사용하며 개선하고 있습니다.
 
-## Repositories
+- **주요 기능:** 모델·시스템 프롬프트·생성 파라미터 설정, 대화 자동 요약·제목 생성, 웹검색·이미지 입력·PDF OCR
+- **관리 기능:** 사용자·게스트별 모델 권한과 호출 제한, 사용량 조회, 요청 기록
+- **수행 역할:** 요구사항 정의, AI 코딩 도구를 활용한 구현, 배포, 실사용 검증과 개선
+- **컨텍스트 관리:** 오래된 대화를 요약하고 최근 원문과 결합해 다음 요청에 전달
+- [서비스 체험](https://chat.mihoservice.xyz) · 게스트 체험 코드: `testuser`
+- [소스 저장소](https://github.com/totjae/modelnaru)
 
-- [Cresta](https://github.com/totjae/Cresta)  
-  AI 분석과 규칙 기반 리스크 엔진을 결합한 국내 주식 단기매매 시스템.
+※ 웹검색·이미지 입력 등 지원 기능은 모델에 따라 다릅니다.
 
-- [ModelNaru](https://github.com/totjae/modelnaru)  
-  여러 AI Provider와 모델을 한곳에서 사용할 수 있도록 만든 셀프호스팅 AI 채팅 웹 서비스.
+### MCPex · 로컬 모델 작업 위임
 
-- [MCPex](https://github.com/totjae/mcpex)  
-  클라우드 API와 로컬 AI 모델을 연결하고, 사용자 정의 에이전트를 MCP 도구로 제공하는 로컬 에이전트 관리 서비스.
+코딩 에이전트에서 로컬 모델과 AI API를 활용할 수 있도록 연결하는 MCP 서비스입니다. Codex 사용량 절감을 목표로 코드 읽기·조사·수정 작업 위임에 활용했습니다.
 
-- [Breakwall](https://github.com/totjae/breakwall)  
-  Godot 기반으로 제작한 랜덤 맵 벽돌부수기 게임.
+- **수행 내용:** 작업 범위 설정, MCP 연결·사용, 실행 결과 확인과 지침 수정
+- **개선 경험:** 도구 미호출 시 위임 조건 명시, 부정확한 분석에 대한 오류 피드백·재작업, 위임 작업 체계화·자가 검토·검토 방식 변경
+- **검증 범위:** 실제 코드 작업에 활용했으며, 사용량 절감률은 별도로 측정하지 않았습니다.
+- [소스 저장소](https://github.com/totjae/mcpex)
 
-- [DMI Market Pipeline](https://github.com/totjae/dmi-market-pipeline)  
-  예약 실행되는 시장 분석 파이프라인의 상태와 결과를 관리하기 위한 저장소.
+### 로컬 LLM 분산 추론 실험
 
-## Infrastructure
+단일 16GB GPU의 메모리 제약을 보완하기 위해 메인 PC와 BC-250을 llama.cpp RPC로 연결해 모델 레이어를 분산했습니다.
 
-개인 서비스 운영, 로컬 AI 추론, 개발 및 시스템 관리를 역할별로 분리한 개인 인프라를 운영하고 있습니다.
+- **구성:** RTX 5070 Ti 16GB / Windows 11 + BC-250 / Fedora, 동일 네트워크의 이기종 장비 연결
+- **실험:** 27B 모델의 양자화 설정 비교, 컨텍스트 크기·레이어 배분 조정, 메모리 사용량·생성 속도 확인
+- **결과:** 실제 답변 생성 성공. 실사용에는 생성 속도가 부족해 실험 후 장비별 적합 모델을 독립 실행하는 방식으로 전환
+- **수행 방식:** AI의 명령·설정 안내를 참고해 직접 구성·실행·검증
 
-```mermaid
-flowchart LR
-    subgraph NET_DEV["Development / Management Network"]
-        direction LR
-        LAPTOP["Laptop<br/>Main PC Control<br/>Server Management"]
-        MAIN_PC["Main Computer<br/>Development · Coding<br/>Sub-agent MCP"]
-        LAPTOP ~~~ MAIN_PC
-    end
+현재 상시 운영하는 분산 클러스터가 아닌, 완료한 실험입니다. 상세 구성과 결과는 [포트폴리오](./김재영_포트폴리오.pdf)에 정리했습니다.
 
-    subgraph NET_AI["AI / Service Network"]
-        direction LR
-        SERVER["Server<br/>ModelNaru · Cresta<br/>Hermes Agent"]
-        LOCAL_AI["Local AI Machine<br/>gpt-oss · Gemma<br/>Qwen · LFM"]
-        AI_CLUSTER["AI Layer Cluster<br/>Layer-wise Distributed Inference<br/>(Research)"]
-        SERVER ~~~ LOCAL_AI
-        LOCAL_AI ~~~ AI_CLUSTER
-    end
+### 깨비랑 · AI 관광 가이드
 
-    NET_DEV ~~~ NET_AI
-```
+관광지를 추천하고 선택한 장소와 관련된 인물 도슨트가 해설을 이어가는 챗봇입니다.
 
-### AI / Service Network
+- **2인 팀:** 본인은 공동 기획·플랫폼 내 에이전트 연결·프롬프트 조정, 팀원은 관광 기획·QA 담당
+- **구현 방식:** 플랫폼에서 에이전트를 연결하고 프롬프트를 조정해 구현
+- **결과:** 관광 추천부터 도슨트 해설까지 실제 동작 시연
 
-- **Server** — ModelNaru, Cresta, Hermes 등 개인 서비스와 에이전트 시스템 운영
-- **Local AI Machine** — `gpt-oss`, `Gemma`, `Qwen`, `LFM` 계열 로컬 모델 구동
-- **AI Layer Cluster (Research)** — LLM의 레이어를 여러 장비에 분산해 추론하는 클러스터 구조와 장비 간 통신·메모리 활용 방식을 연구 중
+### Context Loom · 컨텍스트 파이프라인
 
-### Development / Management Network
+메시지를 역할별로 필터링하고, 보조 모델이 생성한 분석·요약·초안을 메인 모델 입력에 결합하는 프로젝트입니다. LLM 입력 구성 방식을 탐색했습니다.
 
-- **Laptop** — 메인 컴퓨터 원격 제어 및 서버 관리
-- **Main Computer** — 개발·코딩 작업 및 서브에이전트 MCP 실행
+깨비랑과 Context Loom의 구조·역할은 [포트폴리오](./김재영_포트폴리오.pdf)에서 확인할 수 있습니다.
+
+## 기타 프로젝트
+
+- [Cresta](https://github.com/totjae/Cresta) — AI 분석과 규칙 기반 리스크 엔진을 결합한 국내 주식 단기매매 시스템
+- [Breakwall](https://github.com/totjae/breakwall) — Godot 기반 랜덤 맵 벽돌부수기 게임
+- [DMI Market Pipeline](https://github.com/totjae/dmi-market-pipeline) — 예약 실행되는 시장 분석 파이프라인의 상태·결과 관리
+
+## 개인 인프라
+
+| 장비 | OS | 용도 |
+|---|---|---|
+| N100 미니 PC | Ubuntu | 개인 서비스 배포·운영 |
+| BC-250 | Fedora | 로컬 모델 서빙 |
+| 메인 PC · RTX 5070 Ti 16GB | Windows 11 | 개발·코딩, 로컬 모델 활용 |
+| 노트북 | Windows 11 | 원격 접속·관리 |
+
+분산 추론 실험 이후에는 장비별로 용도에 맞는 모델을 독립 실행하고 있습니다.
